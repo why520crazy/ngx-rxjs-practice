@@ -10,6 +10,7 @@ import { Demo2Component } from './demo2/demo2.component';
 import { MessageComponent } from './message/message.component';
 import { appRouters } from './app.routing';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardResolver } from './dashboard.resolver';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NgxsModule.forRoot(states),
     appRouters
   ],
-  providers: [],
+  providers: [
+    DashboardResolver
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

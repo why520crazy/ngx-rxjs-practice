@@ -1,11 +1,12 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs/internal/Observable';
 
 export class FetchTodo {
     static type = 'FetchTodo';
 
-    constructor(public readonly payload: string[]) { }
+    constructor() { }
 }
 
 
@@ -39,8 +40,17 @@ export class TodoState {
     }
 
     @Action(FetchTodo)
-    fetchTodo({ getState, setState }: StateContext<string[]>, { payload }: FetchTodo) {
-        setState([...getState(), ...payload]);
+    fetchTodo({ getState, setState }: StateContext<string[]>, { }: FetchTodo) {
+        return new Observable((observer) => {
+            setTimeout(() => {
+                observer.next(['task1', 'task2']);
+            });
+        }).pipe(
+            tap((items: string[]) => {
+                // throw new Error(`sss`);
+                setState(items);
+            })
+        );
     }
 
     @Action(AddTodo)

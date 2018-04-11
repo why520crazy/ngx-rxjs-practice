@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'dashboard',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  public todos: string[] = [];
+
+  constructor(private route: ActivatedRoute, ) { }
 
   ngOnInit() {
+    this.route.data.subscribe((todos: string[]) => {
+      //this.todos = todos;
+    });
   }
 
 }

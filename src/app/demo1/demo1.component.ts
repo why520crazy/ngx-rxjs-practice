@@ -27,7 +27,7 @@ export class Demo1Component implements OnInit {
     }
 
     ngOnInit(): void {
-        this.store.dispatch(new FetchTodo(['任务一', '任务二']));
+        // this.store.dispatch(new FetchTodos(['任务一', '任务二']));
         // forkJoin(this.todos$, this.todos$$);
     }
 
