@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let item of messageService.items">
+    [{{item.dateTime | date : 'yyyy-MM-dd hh:mm ss'}}] - {{item.message}}
+  </li>
+</ul>

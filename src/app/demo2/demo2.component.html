@@ -1,0 +1,9 @@
+<div class="demo-section">
+  Demo2:
+  <ul>
+    <li *ngFor="let todo of todos$ | async">{{todo}}</li>
+  </ul>
+</div>
+
+<input placeholder="请输入任务名字" #taskName>
+<button (click)="addTodo(taskName.value);taskName.value=''">Click</button>
