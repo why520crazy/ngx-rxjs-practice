@@ -1,7 +1,7 @@
 <div class="demo-section">
 Demo1 Todos:
   <ul>
-    <li class="todo" *ngFor="let todo of todos$$ | async; let i = index">
+    <li class="todo" *ngFor="let todo of todos$ | async; let i = index">
       {{todo}} <button (click)="removeTodo(i)">🗑</button>
     </li>
   </ul>

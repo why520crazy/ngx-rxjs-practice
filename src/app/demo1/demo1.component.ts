@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AddTodo, RemoveTodo, TodoState, SetPrefix, TodosState, FetchTodo } from '../todo.state';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { forkJoin } from 'rxjs';
 
 @Component({
     selector: 'demo1',

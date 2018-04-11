@@ -1,4 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
+import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 
 export class FetchTodo {
     static type = 'FetchTodo';
@@ -29,6 +31,8 @@ export class TodoStateModel {
     defaults: []
 })
 export class TodoState {
+    constructor(private http: HttpClient) { }
+
     @Selector()
     static pandas(state: string[]) {
         return state.filter(s => s.indexOf('panda') > -1);
@@ -46,7 +50,12 @@ export class TodoState {
 
     @Action(RemoveTodo)
     removeTodo({ getState, setState }: StateContext<string[]>, { payload }: RemoveTodo) {
-        setState(getState().filter((_, i) => i !== payload));
+        return this.http.get('/api/xxx').pipe(
+            tap((item) => {
+                throw new Error(`sss`);
+                // setState(getState().filter((_, i) => i !== payload));
+            })
+        );
     }
 }
 
