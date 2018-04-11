@@ -1,0 +1,11 @@
+Todos:
+<ul>
+  <li class="todo" *ngFor="let todo of todos$$ | async; let i = index">
+    {{todo}} <button (click)="removeTodo(i)">🗑</button>
+  </li>
+</ul>
+<div *ngIf="(todos$ | async).length === 0">没有任务了</div>
+<br>
+
+<input placeholder="请输入任务名字" #taskName>
+<button (click)="addTodo(taskName.value);taskName.value=''">Click</button>
